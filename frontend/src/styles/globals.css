@@ -17,3 +17,14 @@ body {
     color: #000;
     font-family: "integralcf", sans-serif;
 }
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+}
