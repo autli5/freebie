@@ -1,0 +1,107 @@
+.brands {
+  background-color: #000;
+  padding: 40px 0;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.brandItem {
+  color: #fff;
+  font-weight: 700;
+  flex: 1;
+  text-align: center;
+}
+
+/* Стилизация под оригинальные шрифты брендов */
+.versace {
+  font-family: 'Times New Roman', serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+
+.zara {
+  font-family: 'Arial', sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.gucci {
+  font-family: 'Times New Roman', serif;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.prada {
+  font-family: 'Arial', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.calvinKlein {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .brandItem {
+    flex: 0 0 calc(33.333% - 30px);
+  }
+}
+
+@media (max-width: 768px) {
+  .brands {
+    padding: 30px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+    gap: 20px;
+  }
+
+  .brandItem {
+    flex: 0 0 calc(50% - 20px);
+    font-size: 20px !important;
+  }
+
+  .versace,
+  .gucci {
+    font-size: 22px !important;
+  }
+
+  .zara {
+    font-size: 24px !important;
+  }
+
+  .prada {
+    font-size: 20px !important;
+  }
+
+  .calvinKlein {
+    font-size: 18px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .brandItem {
+    flex: 0 0 100%;
+  }
+}
