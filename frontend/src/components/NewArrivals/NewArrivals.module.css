@@ -1,0 +1,67 @@
+.section {
+  border-top: 3px solid #000;
+  padding: 48px 0 12px;
+  background: #fff;
+}
+
+.section :global(.container) {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.title {
+  margin: 0 0 30px;
+  color: #000;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.viewAll {
+  display: block;
+  width: 138px;
+  height: 36px;
+  margin: 27px auto 0;
+  padding: 0;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  background: #fff;
+  color: #000;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.viewAll:hover {
+  background: #f7f7f7;
+}
+
+@media (max-width: 700px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 28px;
+  }
+}
+
+@media (max-width: 420px) {
+  .section {
+    padding-top: 40px;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+
+  .products {
+    grid-template-columns: 1fr;
+  }
+}
