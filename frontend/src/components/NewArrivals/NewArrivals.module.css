@@ -39,6 +39,7 @@
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
+  margin-bottom: 30px;
 }
 
 .viewAll:hover {

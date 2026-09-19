@@ -6,9 +6,9 @@
 /* Newsletter секция */
 .newsletterSection {
   padding: 0 25px;
-  margin-top: -60px;
   position: relative;
   z-index: 10;
+  transform: translateY(-100px);
 }
 
 .newsletterContainer {

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import hello, ProductListView
+from .views import hello, ProductListView, ProductDetailView
 from reviews.views import ReviewListView, LatestReviewsView, NewsletterCreateView
 
 urlpatterns = [
@@ -12,4 +12,6 @@ urlpatterns = [
     
     # Newsletter
     path("newsletter/", NewsletterCreateView.as_view()),
+
+    path("products/<slug:slug>/", ProductDetailView.as_view()),  
 ]

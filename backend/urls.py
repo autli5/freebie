@@ -12,6 +12,8 @@ urlpatterns = [
     
     # Добавляем reviews
     path("api/reviews/", include("reviews.urls")),
+
+    path("api/cart/", include("cart.urls")),
 ]
 
 if settings.DEBUG:
