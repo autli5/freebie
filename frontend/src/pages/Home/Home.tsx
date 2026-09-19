@@ -5,6 +5,8 @@ import Brends from '../../components/Brends/Brends'
 import Arrivals from '../../components/NewArrivals/NewArrivals'
 import TopSelling from '../../components/TopSelling/TopSelling'
 import DressStyle from '../../components/DressStyle/DressStyle'
+import Reviews from '../../components/Reviews/Reviews'
+import Footer from '../../components/Footer/Footer'
 
 function Home() {
   return (
@@ -22,6 +24,10 @@ function Home() {
       <TopSelling />
 
       <DressStyle />
+
+      <Reviews />
+
+      <Footer />
     </>
   )
 }

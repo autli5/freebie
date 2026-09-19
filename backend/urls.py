@@ -4,14 +4,16 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-
     path("admin/", admin.site.urls),
-
+    
     path("api/", include("api.urls")),
-
+    
     path("api/dress-styles/", include("dressstyle.urls")),
-
+    
+    # Добавляем reviews
+    path("api/reviews/", include("reviews.urls")),
 ]
+
 if settings.DEBUG:
     urlpatterns += static(
         settings.MEDIA_URL,
