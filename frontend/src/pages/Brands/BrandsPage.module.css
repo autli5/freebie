@@ -1,0 +1,451 @@
+.page {
+  min-height: 80vh;
+}
+
+/* ─── Hero ─────────────────────── */
+.hero {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  padding: 72px 24px 60px;
+  color: #fff;
+  text-align: center;
+}
+
+.heroInner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  margin: 0 0 20px;
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 1;
+}
+
+.heroSub {
+  margin: 0 0 40px;
+  font-size: 17px;
+  color: rgba(255,255,255,0.62);
+  line-height: 1.65;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat strong {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #fff;
+}
+
+.stat span {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ─── Container ─────────────────────── */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-size: 14px;
+  color: #777;
+}
+
+.breadcrumbLink {
+  color: #777;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumbLink:hover { color: #000; }
+.sep { color: #bbb; }
+
+/* ─── Search ─────────────────────── */
+.searchWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.searchBox {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 20px;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 14px;
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.searchBox:focus-within { border-color: #000; }
+
+.searchIcon {
+  width: 20px;
+  height: 20px;
+  color: #999;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: 0;
+  outline: none;
+  font-family: inherit;
+  font-size: 15px;
+  color: #111;
+  background: transparent;
+}
+
+.searchInput::placeholder { color: #bbb; }
+
+.searchCount {
+  font-size: 14px;
+  color: #888;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+/* ─── Section ─────────────────────── */
+.section {
+  margin-bottom: 52px;
+}
+
+.sectionTitle {
+  margin: 0 0 24px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #000;
+}
+
+/* ─── Featured Cards (top 3) ─────────────────────── */
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.featuredCard {
+  padding: 28px 28px 24px;
+  background: var(--bg);
+  border-radius: 24px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.featuredCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  border-color: var(--accent, #ccc);
+}
+
+.featuredCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardEmoji { font-size: 36px; }
+
+.featuredBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 30px;
+  background: #000;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.cardName {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.cardTagline {
+  margin: 0;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.cardItems {
+  font-size: 13px;
+  font-weight: 600;
+  color: #777;
+}
+
+.cardArrow {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent, #000);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.featuredCard:hover .cardArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── All Brands Grid ─────────────────────── */
+.brandsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.brandCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 20px;
+  background: var(--bg);
+  border-radius: 18px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  color: #000;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.brandCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border-color: var(--accent, #ccc);
+}
+
+.brandEmoji { font-size: 28px; flex-shrink: 0; }
+
+.brandInfo { flex: 1; min-width: 0; }
+
+.brandName {
+  margin: 0 0 3px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.brandTagline {
+  margin: 0 0 5px;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.brandItems {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent, #888);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.brandArrow {
+  font-size: 16px;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+  flex-shrink: 0;
+  color: var(--accent, #000);
+}
+
+.brandCard:hover .brandArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── Empty ─────────────────────── */
+.empty {
+  text-align: center;
+  padding: 80px 40px;
+  border: 1px solid #e8e8e8;
+  border-radius: 24px;
+  margin-bottom: 48px;
+}
+
+.emptyIcon { font-size: 52px; margin-bottom: 20px; }
+.empty h3 { margin: 0 0 8px; font-size: 20px; font-weight: 700; }
+.empty p { margin: 0 0 24px; color: #666; }
+
+.emptyBtn {
+  padding: 12px 28px;
+  border: 0;
+  border-radius: 30px;
+  background: #000;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.emptyBtn:hover { background: #333; }
+
+/* ─── Partner CTA ─────────────────────── */
+.partnerCta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: center;
+  padding: 48px 52px;
+  background: #f7f7f7;
+  border: 1px solid #e8e8e8;
+  border-radius: 28px;
+}
+
+.partnerTitle {
+  margin: 0 0 12px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #000;
+}
+
+.partnerText {
+  margin: 0 0 28px;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+.partnerActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.partnerBtn {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 30px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.partnerBtn:hover { background: #222; transform: translateY(-2px); }
+
+.partnerBtnOutline {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 30px;
+  border: 1.5px solid #000;
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.partnerBtnOutline:hover { background: #000; color: #fff; }
+
+.partnerBenefits {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.partnerBenefit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+}
+
+.partnerBenefit span:first-child {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ─── Responsive ─────────────────────── */
+@media (max-width: 1024px) {
+  .featuredGrid { grid-template-columns: repeat(2, 1fr); }
+  .brandsGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .heroTitle { font-size: 42px; }
+  .stats { gap: 24px; }
+  .partnerCta { grid-template-columns: 1fr; padding: 32px 28px; }
+}
+
+@media (max-width: 600px) {
+  .featuredGrid { grid-template-columns: 1fr; }
+  .brandsGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .heroTitle { font-size: 32px; }
+}

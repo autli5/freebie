@@ -1,17 +1,229 @@
 import { useState } from 'react'
-import { useCart } from '../../context/CartContext' // <-- ВАЖНО: только этот импорт!
+import { useCart } from '../../context/CartContext'
 import styles from './Cart.module.css'
 import AnnouncementBar from '../../components/AnnouncementBar/AnnouncementBar'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 
+// ──────────────────────────────────────────────
+// Checkout Modal
+// ──────────────────────────────────────────────
+interface CheckoutModalProps {
+  total: number
+  onClose: () => void
+}
+
+function CheckoutModal({ total, onClose }: CheckoutModalProps) {
+  const [step, setStep] = useState<'form' | 'success'>('form')
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    address: '',
+    city: '',
+    zip: '',
+    payment: 'card',
+  })
+  const [errors, setErrors] = useState<Record<string, string>>({})
+
+  const validate = () => {
+    const e: Record<string, string> = {}
+    if (!form.firstName.trim()) e.firstName = 'Required'
+    if (!form.lastName.trim()) e.lastName = 'Required'
+    if (!form.email.trim() || !/\S+@\S+\.\S+/.test(form.email)) e.email = 'Valid email required'
+    if (!form.phone.trim()) e.phone = 'Required'
+    if (!form.address.trim()) e.address = 'Required'
+    if (!form.city.trim()) e.city = 'Required'
+    if (!form.zip.trim()) e.zip = 'Required'
+    return e
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const errs = validate()
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs)
+      return
+    }
+    setStep('success')
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+    setErrors((prev) => ({ ...prev, [e.target.name]: '' }))
+  }
+
+  return (
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        <button type="button" className={styles.modalClose} onClick={onClose} aria-label="Close">
+          ✕
+        </button>
+
+        {step === 'form' ? (
+          <>
+            <h2 className={styles.modalTitle}>Checkout</h2>
+            <p className={styles.modalSubtitle}>
+              Order total: <strong>${total.toFixed(0)}</strong>
+            </p>
+
+            <form className={styles.checkoutForm} onSubmit={handleSubmit} noValidate>
+              {/* Personal */}
+              <fieldset className={styles.fieldset}>
+                <legend className={styles.legend}>Personal Info</legend>
+                <div className={styles.formRow}>
+                  <div className={styles.field}>
+                    <label className={styles.label}>First Name</label>
+                    <input
+                      name="firstName"
+                      value={form.firstName}
+                      onChange={handleChange}
+                      className={`${styles.input} ${errors.firstName ? styles.inputError : ''}`}
+                      placeholder="John"
+                    />
+                    {errors.firstName && <span className={styles.error}>{errors.firstName}</span>}
+                  </div>
+                  <div className={styles.field}>
+                    <label className={styles.label}>Last Name</label>
+                    <input
+                      name="lastName"
+                      value={form.lastName}
+                      onChange={handleChange}
+                      className={`${styles.input} ${errors.lastName ? styles.inputError : ''}`}
+                      placeholder="Doe"
+                    />
+                    {errors.lastName && <span className={styles.error}>{errors.lastName}</span>}
+                  </div>
+                </div>
+                <div className={styles.formRow}>
+                  <div className={styles.field}>
+                    <label className={styles.label}>Email</label>
+                    <input
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
+                      placeholder="john@example.com"
+                    />
+                    {errors.email && <span className={styles.error}>{errors.email}</span>}
+                  </div>
+                  <div className={styles.field}>
+                    <label className={styles.label}>Phone</label>
+                    <input
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      className={`${styles.input} ${errors.phone ? styles.inputError : ''}`}
+                      placeholder="+1 (555) 000-0000"
+                    />
+                    {errors.phone && <span className={styles.error}>{errors.phone}</span>}
+                  </div>
+                </div>
+              </fieldset>
+
+              {/* Shipping */}
+              <fieldset className={styles.fieldset}>
+                <legend className={styles.legend}>Shipping Address</legend>
+                <div className={styles.field}>
+                  <label className={styles.label}>Street Address</label>
+                  <input
+                    name="address"
+                    value={form.address}
+                    onChange={handleChange}
+                    className={`${styles.input} ${errors.address ? styles.inputError : ''}`}
+                    placeholder="123 Main St"
+                  />
+                  {errors.address && <span className={styles.error}>{errors.address}</span>}
+                </div>
+                <div className={styles.formRow}>
+                  <div className={styles.field}>
+                    <label className={styles.label}>City</label>
+                    <input
+                      name="city"
+                      value={form.city}
+                      onChange={handleChange}
+                      className={`${styles.input} ${errors.city ? styles.inputError : ''}`}
+                      placeholder="New York"
+                    />
+                    {errors.city && <span className={styles.error}>{errors.city}</span>}
+                  </div>
+                  <div className={styles.field}>
+                    <label className={styles.label}>ZIP Code</label>
+                    <input
+                      name="zip"
+                      value={form.zip}
+                      onChange={handleChange}
+                      className={`${styles.input} ${errors.zip ? styles.inputError : ''}`}
+                      placeholder="10001"
+                    />
+                    {errors.zip && <span className={styles.error}>{errors.zip}</span>}
+                  </div>
+                </div>
+              </fieldset>
+
+              {/* Payment */}
+              <fieldset className={styles.fieldset}>
+                <legend className={styles.legend}>Payment Method</legend>
+                <div className={styles.paymentOptions}>
+                  {(['card', 'paypal', 'cash'] as const).map((method) => (
+                    <label
+                      key={method}
+                      className={`${styles.paymentOption} ${form.payment === method ? styles.paymentOptionActive : ''}`}
+                    >
+                      <input
+                        type="radio"
+                        name="payment"
+                        value={method}
+                        checked={form.payment === method}
+                        onChange={handleChange}
+                        className={styles.paymentRadio}
+                      />
+                      {method === 'card' && '💳 Credit / Debit Card'}
+                      {method === 'paypal' && '🅿️ PayPal'}
+                      {method === 'cash' && '💵 Cash on Delivery'}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+
+              <button type="submit" className={styles.submitButton}>
+                Place Order — ${total.toFixed(0)}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            </form>
+          </>
+        ) : (
+          <div className={styles.successState}>
+            <div className={styles.successIcon}>✓</div>
+            <h2 className={styles.successTitle}>Order Placed!</h2>
+            <p className={styles.successText}>
+              Thank you, {form.firstName}! Your order has been placed successfully.
+              <br />
+              We'll send a confirmation to <strong>{form.email}</strong>.
+            </p>
+            <button type="button" className={styles.successButton} onClick={onClose}>
+              Continue Shopping
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ──────────────────────────────────────────────
+// Cart Page
+// ──────────────────────────────────────────────
 function Cart() {
-  // Берем всё из глобального контекста. Никаких своих fetch!
   const { cart, updateQuantity, removeFromCart } = useCart()
   const [promoCode, setPromoCode] = useState('')
   const [appliedDiscount, setAppliedDiscount] = useState<number | null>(null)
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false)
 
-  // Если корзина еще загружается
   if (!cart) {
     return <div className={styles.loading}>Loading cart...</div>
   }
@@ -27,7 +239,7 @@ function Cart() {
   }
 
   const subtotal = cartItems.reduce(
-    (total, item) => total + Number(item.product.price) * item.quantity,
+    (total: number, item: any) => total + Number(item.product.price) * item.quantity,
     0
   )
 
@@ -58,7 +270,7 @@ function Cart() {
                   <p>Add some products to your cart to continue.</p>
                 </div>
               ) : (
-                cartItems.map((item) => (
+                cartItems.map((item: any) => (
                   <article key={item.id} className={styles.item}>
                     <div className={styles.imageWrapper}>
                       <img
@@ -173,6 +385,7 @@ function Cart() {
                 type="button"
                 className={styles.checkoutButton}
                 disabled={cartItems.length === 0}
+                onClick={() => setIsCheckoutOpen(true)}
               >
                 Go to Checkout
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -186,6 +399,10 @@ function Cart() {
       </main>
 
       <Footer />
+
+      {isCheckoutOpen && (
+        <CheckoutModal total={total} onClose={() => setIsCheckoutOpen(false)} />
+      )}
     </>
   )
 }

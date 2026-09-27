@@ -6,6 +6,7 @@ import ProductsCard from '../ProductCard/ProductCard'
 type Product = {
   id: number
   name: string
+  slug: string
   image: string
   rating: number
   price: string

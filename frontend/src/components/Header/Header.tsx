@@ -1,19 +1,30 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { useCart } from '../../context/CartContext' // <-- ВАЖНО: импорт из контекста, а не из hooks
+import { useCart } from '../../context/CartContext'
 
 import { navigationItems } from '../../shared/navigation/navigation.data'
 import styles from './Header.module.css'
 
 function Header() {
   const [isShopOpen, setIsShopOpen] = useState(false)
-  
+  const shopRef = useRef<HTMLDivElement>(null)
+
   // Получаем актуальные данные корзины из глобального контекста
   const { cart } = useCart()
 
   // Считаем общее количество товаров в реальном времени
-  // Если cart или items еще не загрузились, вернет 0
   const totalItems = cart?.items?.reduce((sum: number, item: any) => sum + item.quantity, 0) ?? 0
+
+  // Закрываем дропдаун при клике вне его
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (shopRef.current && !shopRef.current.contains(e.target as Node)) {
+        setIsShopOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   return (
     <header className={styles.header}>
@@ -25,23 +36,65 @@ function Header() {
         <nav className={styles.navigation}>
           {navigationItems.map((item) =>
             item.children ? (
-              <button
+              // Shop с выпадающим меню
+              <div
                 key={item.label}
-                type="button"
-                className={styles.navigationItem}
-                onClick={() => setIsShopOpen(!isShopOpen)}
+                className={styles.shopWrapper}
+                ref={shopRef}
               >
-                {item.label}
-                <span className={styles.arrow}>▼</span>
-              </button>
+                <button
+                  type="button"
+                  className={`${styles.navigationItem} ${isShopOpen ? styles.navigationItemActive : ''}`}
+                  onClick={() => setIsShopOpen(!isShopOpen)}
+                  aria-haspopup="true"
+                  aria-expanded={isShopOpen}
+                >
+                  {item.label}
+                  <span className={`${styles.arrow} ${isShopOpen ? styles.arrowOpen : ''}`}>▼</span>
+                </button>
+
+                {isShopOpen && (
+                  <div className={styles.dropdown}>
+                    <div className={styles.dropdownGrid}>
+                      {/* Категории */}
+                      <div className={styles.dropdownSection}>
+                        <p className={styles.dropdownSectionTitle}>Categories</p>
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            to={child.href!}
+                            className={styles.dropdownLink}
+                            onClick={() => setIsShopOpen(false)}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                      {/* Быстрые ссылки */}
+                      <div className={styles.dropdownSection}>
+                        <p className={styles.dropdownSectionTitle}>Discover</p>
+                        <Link to="/new-arrivals" className={styles.dropdownLink} onClick={() => setIsShopOpen(false)}>
+                          ✨ New Arrivals
+                        </Link>
+                        <Link to="/sale" className={styles.dropdownLink} onClick={() => setIsShopOpen(false)}>
+                          🔥 On Sale
+                        </Link>
+                        <Link to="/brands" className={styles.dropdownLink} onClick={() => setIsShopOpen(false)}>
+                          🏷️ Brands
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             ) : (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href!}
                 className={styles.navigationItem}
               >
                 {item.label}
-              </a>
+              </Link>
             ),
           )}
         </nav>
@@ -85,7 +138,6 @@ function Header() {
               <circle cx="17" cy="20" r="1.5" fill="currentColor" />
             </svg>
 
-            {/* Показываем бейдж только если товаров > 0 */}
             {totalItems > 0 && (
               <span className={styles.cartCount}>
                 {totalItems > 99 ? '99+' : totalItems}

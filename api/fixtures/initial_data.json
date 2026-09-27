@@ -1,0 +1,282 @@
+[
+  {
+    "model": "api.category",
+    "pk": 1,
+    "fields": {
+      "name": "New Arrivals",
+      "slug": "new-arrivals"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 2,
+    "fields": {
+      "name": "Top Selling",
+      "slug": "top-selling"
+    }
+  },
+  {
+    "model": "api.category",
+    "pk": 3,
+    "fields": {
+      "name": "On Sale",
+      "slug": "on-sale"
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "name": "T-shirt with Tape Details",
+      "slug": "t-shirt-with-tape-details",
+      "description": "A relaxed-fit t-shirt featuring sporty tape details along the shoulders and sleeves. Crafted from 100% breathable cotton for all-day comfort. Perfect for casual outings or layering under a jacket.",
+      "image": "products/t-shirt.png",
+      "rating": "4.5",
+      "price": "120.00",
+      "old_price": null
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "name": "Skinny Fit Jeans",
+      "slug": "skinny-fit-jeans",
+      "description": "Slim silhouette jeans with a mid-rise waist, crafted from stretch denim that moves with you. The classic five-pocket design and clean finish make them effortlessly versatile from day to night.",
+      "image": "products/skinny.png",
+      "rating": "3.5",
+      "price": "240.00",
+      "old_price": "260.00"
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 3,
+    "fields": {
+      "category": 1,
+      "name": "Checkered Shirt",
+      "slug": "checkered-shirt",
+      "description": "A timeless checkered pattern shirt in a relaxed regular fit. Woven from lightweight cotton flannel, it's ideal for layering or wearing open over a tee. Available in classic colour combinations.",
+      "image": "products/checkered.png",
+      "rating": "4.5",
+      "price": "180.00",
+      "old_price": null
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "name": "Sleeve Striped T-Shirt",
+      "slug": "sleeve-striped-t-shirt",
+      "description": "A modern spin on a classic design — bold stripes run along the sleeves while the body stays clean. Made from soft jersey fabric with a relaxed fit and a crew neckline. Effortlessly cool.",
+      "image": "products/sleeve.png",
+      "rating": "4.5",
+      "price": "130.00",
+      "old_price": "160.00"
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 5,
+    "fields": {
+      "category": 2,
+      "name": "Vertical Striped Shirt",
+      "slug": "vertical-striped-shirt",
+      "description": "Classic vertical stripes give this button-up shirt a polished, elongating silhouette. Made from a crisp cotton-blend fabric that keeps its shape all day. Great for smart-casual occasions.",
+      "image": "products/Striped.png",
+      "rating": "5.0",
+      "price": "212.00",
+      "old_price": "232.00"
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 6,
+    "fields": {
+      "category": 2,
+      "name": "Courage Graphic T-shirt",
+      "slug": "courage-graphic-t-shirt",
+      "description": "Express yourself with this bold graphic tee. Features a large front print on heavyweight cotton. The relaxed fit and ribbed crew neck make it a wardrobe staple for any creative individual.",
+      "image": "products/Courage.png",
+      "rating": "4.0",
+      "price": "145.00",
+      "old_price": null
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 7,
+    "fields": {
+      "category": 2,
+      "name": "Loose Fit Bermuda Shorts",
+      "slug": "loose-fit-bermuda-shorts",
+      "description": "Comfortable, relaxed-fit Bermuda shorts perfect for warm days. Features side pockets, a drawstring waist, and a clean hem. Made from lightweight twill fabric that keeps you cool and stylish.",
+      "image": "products/Loose.png",
+      "rating": "3.0",
+      "price": "80.00",
+      "old_price": null
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 8,
+    "fields": {
+      "category": 2,
+      "name": "Faded Skinny Jeans",
+      "slug": "faded-skinny-jeans",
+      "description": "Faded wash skinny jeans with a worn-in look that gets better over time. Slim through the hip and thigh, with a tapered leg opening. Made from a stretch-denim blend for maximum comfort.",
+      "image": "products/Faded.png",
+      "rating": "4.5",
+      "price": "210.00",
+      "old_price": null
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 9,
+    "fields": {
+      "category": 3,
+      "name": "Classic White Polo",
+      "slug": "classic-white-polo",
+      "description": "A wardrobe essential — the classic pique polo in crisp white. Features a two-button placket, ribbed collar, and cuffed short sleeves. Made from breathable cotton for smart-casual looks.",
+      "image": "products/t-shirt.png",
+      "rating": "4.5",
+      "price": "95.00",
+      "old_price": "130.00"
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 10,
+    "fields": {
+      "category": 3,
+      "name": "Slim Chino Pants",
+      "slug": "slim-chino-pants",
+      "description": "Sharp, versatile slim chinos in a refined cotton blend. Sits slightly below the waist with a neat taper from the knee to the leg opening. A smart alternative to jeans for any occasion.",
+      "image": "products/Faded.png",
+      "rating": "4.0",
+      "price": "110.00",
+      "old_price": "149.00"
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 11,
+    "fields": {
+      "category": 3,
+      "name": "Graphic Print Hoodie",
+      "slug": "graphic-print-hoodie",
+      "description": "A heavyweight pullover hoodie with a bold chest graphic. Features a lined hood with adjustable drawcords, a kangaroo pocket, and ribbed cuffs. Perfect for streetwear layering.",
+      "image": "products/Courage.png",
+      "rating": "4.5",
+      "price": "175.00",
+      "old_price": "220.00"
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 12,
+    "fields": {
+      "category": 3,
+      "name": "Relaxed Linen Shorts",
+      "slug": "relaxed-linen-shorts",
+      "description": "Breathable linen shorts with a relaxed fit and elasticated waistband. The natural texture adds a laid-back summer aesthetic, while the side pockets provide practicality.",
+      "image": "products/Loose.png",
+      "rating": "3.5",
+      "price": "65.00",
+      "old_price": "89.00"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 1,
+    "fields": {
+      "customer_name": "Sarah M.",
+      "rating": 5,
+      "comment": "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.",
+      "verified": true,
+      "created_at": "2024-08-14T10:30:00Z"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 2,
+    "fields": {
+      "customer_name": "Alex K.",
+      "rating": 5,
+      "comment": "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.",
+      "verified": true,
+      "created_at": "2024-08-12T14:00:00Z"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 3,
+    "fields": {
+      "customer_name": "James L.",
+      "rating": 5,
+      "comment": "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.",
+      "verified": true,
+      "created_at": "2024-08-10T09:00:00Z"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 4,
+    "fields": {
+      "customer_name": "Moana H.",
+      "rating": 4,
+      "comment": "I absolutely love this t-shirt! The design is unique and the fabric feels so comfortable. As a fellow designer, I appreciate the attention to detail. It's become my favorite go-to shirt.",
+      "verified": true,
+      "created_at": "2024-08-08T11:00:00Z"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 5,
+    "fields": {
+      "customer_name": "Ethan P.",
+      "rating": 5,
+      "comment": "I'm not just wearing a piece of clothing; I'm wearing a piece of art. The intricate details and vibrant colours have made it my go-to source for unique and stylish fashion.",
+      "verified": true,
+      "created_at": "2024-08-06T16:00:00Z"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 6,
+    "fields": {
+      "customer_name": "Emily R.",
+      "rating": 5,
+      "comment": "The fabric quality is outstanding and the delivery was super fast. I ordered three pieces and all of them fit perfectly. Will definitely be ordering again!",
+      "verified": true,
+      "created_at": "2024-08-04T08:00:00Z"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 7,
+    "fields": {
+      "customer_name": "Marcus T.",
+      "rating": 4,
+      "comment": "Great selection and competitive prices. The packaging was eco-friendly which I really appreciate. The shirt I got is exactly as described in the photos.",
+      "verified": true,
+      "created_at": "2024-08-02T12:00:00Z"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 8,
+    "fields": {
+      "customer_name": "Olivia N.",
+      "rating": 5,
+      "comment": "Shop.co has completely changed how I shop for clothes online. The size guide is accurate, the return process is seamless, and the quality is consistently excellent across all their collections.",
+      "verified": true,
+      "created_at": "2024-07-30T15:00:00Z"
+    }
+  }
+]
